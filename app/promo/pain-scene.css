@@ -1,0 +1,575 @@
+/* Scene 02: the same desktop moves from a close-up into an over-the-shoulder shot.
+   Every changing value comes from the scrubber's clock, including the scratching. */
+.promo-stage[data-shot='1'] {
+  background: #f8faff;
+}
+.promo-stage[data-shot='1'] .film-grain {
+  display: none;
+}
+.promo-stage[data-shot='1'] .film-copy {
+  left: 5%;
+  width: 31%;
+}
+.promo-stage[data-shot='1'] .film-copy h2 {
+  font-size: 4.2cqw;
+}
+.promo-stage[data-shot='1'] .film-copy p {
+  font-size: 1.05cqw;
+}
+.visual-1 {
+  top: 17%;
+  left: 39%;
+  width: 57%;
+  height: 68%;
+}
+.pain-story {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+.pain-monitor {
+  position: absolute;
+  z-index: 2;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 29cqw;
+  transform: translateY(calc(var(--pullback) * -1.2cqw)) scale(calc(1 - var(--pullback) * 0.22));
+  transform-origin: center top;
+}
+.pain-monitor::before {
+  position: absolute;
+  z-index: -1;
+  inset: -0.45cqw -0.45cqw -0.8cqw;
+  border-radius: 0.7cqw;
+  background: #637b9d;
+  opacity: var(--pullback);
+  content: '';
+}
+.pain-window.explorer-window {
+  top: 0;
+  height: 100%;
+  opacity: 1;
+  transform: none;
+  border-radius: 0.35cqw;
+  box-shadow: none;
+}
+.pain-window .win-folder {
+  background: #f5c65d;
+  box-shadow: none;
+}
+.pain-window .explorer-search {
+  width: 10cqw;
+  overflow: hidden;
+  font-size: 0.61cqw;
+  white-space: nowrap;
+}
+.pain-window .explorer-breadcrumb {
+  min-width: 0;
+  gap: 0.5cqw;
+  white-space: nowrap;
+  font-size: 0.68cqw;
+}
+.pain-window .explorer-breadcrumb > span:last-child {
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.pain-window .explorer-statusbar {
+  font-size: 0.64cqw;
+}
+.pain-window .explorer-statusbar > span:first-child {
+  color: #435e83;
+  font-weight: 600;
+}
+.pain-content {
+  position: relative;
+  min-width: 0;
+  flex: 1;
+  padding: 0.6cqw 0.8cqw;
+  overflow: hidden;
+  background: #fff;
+}
+.pain-folder-viewport {
+  height: 100%;
+  overflow: hidden;
+}
+.pain-folder-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  grid-auto-rows: 4.4cqw;
+  gap: 0.25cqw;
+  transform: translateY(calc(var(--folder-scroll) * -1cqw));
+}
+.catalog-folder {
+  display: flex;
+  min-width: 0;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 0.48cqw;
+  padding: 0.35cqw 0.15cqw;
+  border: 1px solid transparent;
+  border-radius: 0.2cqw;
+  color: #344254;
+}
+.catalog-folder > span {
+  display: block;
+  width: 100%;
+  overflow: hidden;
+  font-size: 0.77cqw;
+  line-height: 1.35;
+  text-align: center;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+.catalog-folder .win-folder {
+  width: 2.6cqw;
+  height: 1.8cqw;
+  flex-shrink: 0;
+  border: 1px solid #edb340;
+  border-radius: 0.12cqw 0.18cqw 0.23cqw 0.23cqw;
+  background: #f5c65d;
+}
+.catalog-folder .win-folder::before {
+  top: -0.3cqw;
+  left: -0.065cqw;
+  width: 1.05cqw;
+  height: 0.48cqw;
+  border: 1px solid #e8b44c;
+  border-bottom: 0;
+  border-radius: 0.15cqw 0.18cqw 0 0;
+  background: #f8ce72;
+}
+.pain-story[data-folders-settled='true'] .catalog-target {
+  border-color: #9bc4f1;
+  background: #e5f1ff;
+}
+.pain-folder-pointer {
+  position: absolute;
+  z-index: 5;
+  top: 15.5cqw;
+  left: 38.8cqw;
+  width: 1.6cqw;
+  height: 2cqw;
+}
+.pain-folder-pointer .film-cursor {
+  top: 0;
+  right: auto;
+  bottom: auto;
+  left: 0;
+  width: 1.15cqw;
+  height: 1.5cqw;
+}
+.pain-double-click {
+  position: absolute;
+  top: -0.8cqw;
+  left: -0.9cqw;
+  width: 2cqw;
+  height: 2cqw;
+  border: 0.12cqw solid #4f82d7;
+  border-radius: 50%;
+  opacity: var(--folder-click);
+  transform: scale(calc(1.4 - var(--folder-click) * 0.7));
+}
+.pain-scrollbar {
+  position: absolute;
+  top: 0.45cqw;
+  right: 0.15cqw;
+  bottom: 0.45cqw;
+  width: 0.35cqw;
+  border-radius: 0.2cqw;
+  background: #f6f7f9;
+}
+.pain-scrollbar > i {
+  position: absolute;
+  top: calc(var(--folder-scroll) * 0.045cqw);
+  width: 0.25cqw;
+  height: 1cqw;
+  border-radius: 0.2cqw;
+  background: #a1aab5;
+}
+.show-versions .pain-scrollbar > i {
+  top: calc(var(--version-scroll) * 0.46cqw);
+  height: 6.4cqw;
+}
+.version-head,
+.version-row {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 8cqw 4.4cqw 4.4cqw;
+  align-items: center;
+  column-gap: 0.4cqw;
+}
+.version-head {
+  height: 1.8cqw;
+  color: #596a80;
+  font-size: 0.63cqw;
+  border-bottom: 1px solid #e7ecf3;
+}
+.version-head > span {
+  padding-left: 0.25cqw;
+  border-right: 1px solid #e3e7ee;
+}
+.version-head > span:first-child {
+  padding-left: 0.4cqw;
+}
+.pain-version-viewport {
+  height: 14.8cqw;
+  overflow: hidden;
+}
+.pain-version-list {
+  transform: translateY(calc(var(--version-scroll) * -1cqw));
+}
+.version-row {
+  height: 1.85cqw;
+  padding: 0 0.1cqw;
+  border: 1px solid transparent;
+  color: #67788c;
+  font-size: 0.57cqw;
+  font-variant-numeric: tabular-nums;
+}
+.version-row > span {
+  min-width: 0;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+.version-row > span:first-child {
+  display: flex;
+  align-items: center;
+  gap: 0.45cqw;
+  color: #293b53;
+  font-size: 0.76cqw;
+}
+.version-row b {
+  overflow: hidden;
+  font-weight: 450;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+.version-icon {
+  display: inline-flex;
+  width: 1.15cqw;
+  height: 1.3cqw;
+  flex: 0 0 auto;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid #b8d7f3;
+  border-radius: 0.12cqw;
+  background: #e8f2ff;
+  color: #246da3;
+  font-size: 0.59cqw;
+  font-weight: 650;
+  font-style: normal;
+}
+.version-icon.version-ai {
+  border-color: #edd2a7;
+  background: #fff3de;
+  color: #a2681d;
+}
+.version-confusing:nth-child(even) {
+  background: #f7f9fc;
+}
+.version-confusing:last-child {
+  border-color: #bfcee4;
+  border-radius: 0.18cqw;
+  background: #ebf2fe;
+}
+.version-confusing:last-child b {
+  color: #295998;
+  font-weight: 600;
+}
+
+/* The desk and the back of the character enter only once the filenames settle. */
+.monitor-neck {
+  position: absolute;
+  z-index: -2;
+  top: 100%;
+  left: calc(50% - 1.8cqw);
+  width: 3.6cqw;
+  height: 5.2cqw;
+  background: #b9cbe2;
+  opacity: var(--pullback);
+}
+.monitor-foot {
+  position: absolute;
+  z-index: -1;
+  top: calc(100% + 4.7cqw);
+  left: calc(50% - 6cqw);
+  width: 12cqw;
+  height: 0.65cqw;
+  border-radius: 0.2cqw;
+  background: #a5bbd8;
+  opacity: var(--pullback);
+}
+.pain-desk {
+  position: absolute;
+  z-index: 1;
+  top: 26.7cqw;
+  left: 0;
+  width: 100%;
+  height: 3.5cqw;
+  border: 1px solid #c8d6e9;
+  border-bottom: 0.3cqw solid #bdcde4;
+  border-radius: 0.2cqw;
+  background: #e7eef9;
+  opacity: var(--pullback);
+}
+.pain-desk::before,
+.pain-desk::after {
+  position: absolute;
+  top: 100%;
+  width: 1cqw;
+  height: 6.6cqw;
+  border-radius: 0 0 0.15cqw 0.15cqw;
+  background: #bdcde4;
+  content: '';
+}
+.pain-desk::before {
+  left: 3cqw;
+}
+.pain-desk::after {
+  right: 3cqw;
+}
+.pain-desk > i {
+  position: absolute;
+  top: 1cqw;
+  left: 27%;
+  width: 28%;
+  height: 1.8cqw;
+  border: 1px solid #bdcbdd;
+  border-radius: 0.2cqw;
+  background:
+    repeating-linear-gradient(90deg, transparent 0 0.6cqw, #c9d5e6 0.6cqw 0.65cqw),
+    repeating-linear-gradient(#f3f6fc 0 0.4cqw, #c9d5e6 0.4cqw 0.46cqw);
+}
+.pain-desk > span {
+  position: absolute;
+  top: 1cqw;
+  right: 29%;
+  width: 1.4cqw;
+  height: 1.75cqw;
+  border: 1px solid #b7c7dd;
+  border-radius: 0.65cqw;
+  background: #f3f6fc;
+}
+.pain-human {
+  position: absolute;
+  z-index: 4;
+  inset: 0;
+  pointer-events: none;
+}
+.frustrated-person {
+  position: absolute;
+  top: 18.9cqw;
+  left: calc(50% - 7.5cqw);
+  width: 15cqw;
+  height: 19cqw;
+  isolation: isolate;
+}
+/* The raised forearm and hand share a foreground layer above the head.
+   Only the shoulder sleeve stays behind the shirt; hair cannot cut the wrist. */
+.back-neck {
+  position: absolute;
+  z-index: 1;
+  top: 5.1cqw;
+  left: 6.4cqw;
+  width: 2.2cqw;
+  height: 2.6cqw;
+  border-radius: 0.45cqw;
+  background: #e1b08d;
+}
+.back-torso {
+  position: absolute;
+  z-index: 3;
+  top: 6.8cqw;
+  left: 1.6cqw;
+  width: 11.8cqw;
+  height: 11.6cqw;
+  overflow: hidden;
+  border-radius: 3.3cqw 3.3cqw 1cqw 1cqw;
+  background: #8fb5ea;
+}
+.hood-fold {
+  position: absolute;
+  top: -0.2cqw;
+  left: 2.6cqw;
+  width: 6.5cqw;
+  height: 3.2cqw;
+  border: 0.1cqw solid #739ed9;
+  border-top: 0;
+  border-radius: 0 0 45% 45%;
+}
+.back-left-arm,
+.back-upper-arm {
+  position: absolute;
+  z-index: 2;
+  border-radius: 1.5cqw;
+  background: #8fb5ea;
+  transform-origin: 50% 0;
+}
+.back-left-arm {
+  top: 7.7cqw;
+  left: 0.9cqw;
+  width: 2.6cqw;
+  height: 8cqw;
+  transform: rotate(11deg);
+}
+.back-head {
+  position: absolute;
+  z-index: 4;
+  top: 0;
+  left: 4.5cqw;
+  width: 6cqw;
+  height: 6.1cqw;
+  transform: rotate(calc(var(--scratch) * -1.1deg));
+  transform-origin: center bottom;
+}
+.back-ear {
+  position: absolute;
+  top: 3.4cqw;
+  width: 0.75cqw;
+  height: 1.4cqw;
+  border-radius: 50%;
+  background: #e1b08d;
+}
+.ear-left {
+  left: -0.3cqw;
+}
+.ear-right {
+  right: -0.3cqw;
+}
+.back-hair {
+  position: absolute;
+  inset: 0;
+  border-radius: 45% 48% 38% 38%;
+  background: #354b6b;
+}
+.scratch-front-arm {
+  position: absolute;
+  z-index: 5;
+  inset: 0;
+  isolation: isolate;
+}
+.scratch-front-arm .back-forearm {
+  position: absolute;
+  z-index: 0;
+  border-radius: 1.5cqw;
+  background: #8fb5ea;
+}
+.scratch-hand {
+  position: absolute;
+  z-index: 1;
+  width: 0;
+  height: 0;
+  transform-origin: 0 0;
+}
+.scratch-wrist {
+  position: absolute;
+  left: -0.45cqw;
+  top: -0.2cqw;
+  width: 0.9cqw;
+  height: 0.9cqw;
+  border-radius: 0.18cqw;
+  background: #e1b08d;
+}
+.scratch-palm {
+  position: absolute;
+  left: -0.68cqw;
+  top: -1.4cqw;
+  width: 1.36cqw;
+  height: 1.6cqw;
+  border-radius: 45% 45% 35% 35%;
+  background: #e1b08d;
+}
+.scratch-palm > i {
+  position: absolute;
+  top: -0.6cqw;
+  width: 0.28cqw;
+  height: 0.95cqw;
+  border-radius: 0.3cqw 0.3cqw 0 0;
+  background: #e1b08d;
+}
+.scratch-palm > i:nth-child(1) {
+  left: 0.03cqw;
+  top: -0.4cqw;
+  height: 0.8cqw;
+}
+.scratch-palm > i:nth-child(2) {
+  left: 0.36cqw;
+}
+.scratch-palm > i:nth-child(3) {
+  left: 0.69cqw;
+  top: -0.7cqw;
+}
+.scratch-palm > i:nth-child(4) {
+  left: 1.02cqw;
+  top: -0.45cqw;
+}
+.back-chair {
+  position: absolute;
+  z-index: 6;
+  top: 13.6cqw;
+  left: 2.4cqw;
+  width: 10.2cqw;
+  height: 5.1cqw;
+  border-radius: 1.25cqw 1.25cqw 0.7cqw 0.7cqw;
+  background: #607c9f;
+}
+.back-chair > i {
+  position: absolute;
+  top: 100%;
+  left: calc(50% - 0.45cqw);
+  width: 0.9cqw;
+  height: 1.1cqw;
+  border-radius: 0 0 0.2cqw 0.2cqw;
+  background: #607c9f;
+}
+.scratch-marks {
+  position: absolute;
+  z-index: 8;
+  top: -0.8cqw;
+  right: 2.9cqw;
+  width: 2cqw;
+  height: 2cqw;
+  opacity: calc(var(--scratch) * var(--scratch));
+}
+.scratch-marks > i {
+  position: absolute;
+  width: 0.1cqw;
+  height: 0.6cqw;
+  border-radius: 0.2cqw;
+  background: #6d8db6;
+  transform: rotate(18deg);
+}
+.scratch-marks > i:nth-child(2) {
+  top: 0.35cqw;
+  left: 0.7cqw;
+  transform: rotate(45deg);
+}
+.scratch-marks > i:nth-child(3) {
+  top: 0.95cqw;
+  left: 1cqw;
+  transform: rotate(75deg);
+}
+.pain-thought {
+  position: absolute;
+  top: 26.6cqw;
+  right: 0.4cqw;
+  padding: 0.85cqw 1.05cqw;
+  border: 1px solid #c6d5e9;
+  border-radius: 0.75cqw 0.75cqw 0.75cqw 0.1cqw;
+  background: #fff;
+  color: #496890;
+  font-size: 0.97cqw;
+  line-height: 1.75;
+}
+.pain-scene-note {
+  position: absolute;
+  top: 37.2cqw;
+  right: 0;
+  color: #97a6bc;
+  font-size: 0.59cqw;
+}
+.reduced-motion .pain-folder-pointer {
+  display: none;
+}
