@@ -7,7 +7,7 @@ test('both Pages routes prerender usable content and keep local assets under the
     const html = await readFile(new URL('../dist/' + file, import.meta.url), 'utf8')
     assert.match(html, /<html lang="zh-CN">/)
     assert.doesNotMatch(html, /<!--site-(head|content)-->/)
-    assert.match(html, file.startsWith('promo') ? /这张图/ : /Alpha 1\.0\.1-alpha\.1/)
+    assert.match(html, file.startsWith('promo') ? /这张图/ : /Alpha 1\.0\.1-alpha\.2/)
     for (const [, asset] of html.matchAll(/(?:src|href)="(\/[^"#]+)"/g)) {
       assert.ok(asset.startsWith('/siftory-website/'), asset)
       const relative = asset.slice('/siftory-website/'.length)

@@ -113,7 +113,7 @@ test('renders personal-free and commercial-paid usage without tiered plans or pr
   assert.match(text, /个人非商业用途 免费使用/)
   assert.match(text, /商业用途 付费授权/)
   assert.match(text, /商业授权的具体费用、适用范围与办理方式，将随正式版本公布/)
-  assert.match(text, /下载与商业授权办理入口尚未开放/)
+  assert.match(text, /尚无对应安装包，商业授权办理尚未开放/)
   assert.match(text, /Alpha 源码已公开于 GitHub/)
   assert.doesNotMatch(
     text,
@@ -123,7 +123,7 @@ test('renders personal-free and commercial-paid usage without tiered plans or pr
   assert.match(text, /Local-first，不是一句装饰语/)
   assert.match(text, /我的素材会上传到云端吗？/)
   assert.match(text, /看十万级图库找图演示/)
-  assert.match(text, /Alpha 1\.0\.1-alpha\.1/)
+  assert.match(text, /Alpha 1\.0\.1-alpha\.2/)
 
   const ids = new Set([...html.matchAll(/\bid=["']([^"']+)["']/g)].map((match) => match[1]))
   for (const [, target] of html.matchAll(/\bhref=["']#([^"']+)["']/g)) {
@@ -167,8 +167,8 @@ test('renders a compact chat-to-search demo with accessible playback', async () 
   assert.match(text, /pencil[^\s]*\.ai/)
   assert.match(text, /工程文件均为候选，需要打开核对/)
   assert.match(text, /标准模式流程示意（模型与索引已就绪），动画时长不代表搜索耗时/)
-  assert.match(text, /默认简洁界面使用标准模式/)
-  assert.match(text, /模型未就绪时会降级使用图像指纹搜索/)
+  assert.match(text, /统一搜索读取参考图，通过图片指纹在已有本地索引中寻找候选/)
+  assert.match(text, /未下载模型也可使用图片指纹匹配/)
   assert.doesNotMatch(text, /逐层翻找|逐层查找/)
   assert.match(text, /播放演示/)
   assert.match(html, /aria-label=["']演示步骤["']/)

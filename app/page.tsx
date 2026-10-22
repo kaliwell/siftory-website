@@ -69,7 +69,7 @@ const userScenarios = [
   {
     role: '电商、设计与 VFX/3D',
     label: 'DESIGN',
-    description: '寻找同类产品、主体和视觉参考，使用安全冲突策略恢复批量素材命名。',
+    description: '用收到的图片寻找产品原图与视觉参考，打开候选工程文件或所在目录继续核对。',
     outcome: '让视觉参考与交付素材更易复用',
   },
   {
@@ -119,7 +119,7 @@ const faqs = [
   {
     question: '拖入图片后，寻藏实际怎样搜索？',
     answer:
-      '默认简洁界面使用标准模式：读取参考图并计算图像指纹，与已有本地索引匹配；DINOv2 模型与向量索引就绪时，再提取参考图的视觉特征进行检索，合并、去重并按综合得分排列候选。模型未就绪时会降级使用图像指纹搜索；快速模式使用指纹检索，精确模式还会在候选范围内结合颜色和形状评分。',
+      '统一搜索读取参考图，通过图片指纹在已有本地索引中寻找候选；模型与对应索引就绪时，可以进一步使用视觉特征和主体检索。系统合并、去重并排列候选，显示命中依据和未就绪状态。需要先完成来源扫描与图片索引，未下载模型也可使用图片指纹匹配。',
   },
   {
     question: '能找到 PSD、AI 等工程文件吗？',
@@ -134,7 +134,7 @@ const faqs = [
   {
     question: '现在可以下载、购买授权或查看源码吗？',
     answer:
-      '软件正在准备正式发布，下载与商业授权办理入口尚未开放。Alpha 源码已公开于 GitHub，当前版本为 1.0.1-alpha.1；正式许可条款仍待定稿，源码公开不等于采用开源许可证。',
+      'Alpha 源码已公开于 GitHub，当前版本为 1.0.1-alpha.2，采用精简工作台。Release 提供源码快照、备份说明与校验清单，尚无对应安装包，商业授权办理尚未开放。正式许可条款仍待定稿，源码公开不等于采用开源许可证。',
   },
 ] as const
 
@@ -212,16 +212,16 @@ export default function Home() {
               <picture>
                 <img
                   src={sitePath('screenshots/siftory-image-search.png')}
-                  width={1280}
-                  height={800}
-                  alt="寻藏实际运行界面：参考图片查询与本地素材搜索结果"
+                  width={2560}
+                  height={1392}
+                  alt="寻藏 Alpha 2 Windows 实际运行界面：精简导航、参考图查询与图片指纹命中结果"
                   fetchPriority="high"
                   decoding="async"
                 />
               </picture>
             </a>
             <figcaption className="product-capture-caption">
-              <span>寻藏 V1.0.0 · 实际运行界面 · 示例素材</span>
+              <span>寻藏 1.0.1-alpha.2 · Windows 实际运行 · 生成示例素材</span>
               <a
                 href={sitePath('screenshots/siftory-image-search.png')}
                 target="_blank"
@@ -261,11 +261,9 @@ export default function Home() {
               </article>
             ))}
           </div>
-          <aside className="secondary-tools" aria-label="更多内置工具">
-            <span>更多内置工具</span>
-            <p>
-              文件管理器 · 安全批量重命名 · App Storage · 远程终端 · 提示词面板 · 多面板桌面工作区
-            </p>
+          <aside className="secondary-tools" aria-label="精简工作台">
+            <span>精简工作台</span>
+            <p>统一搜索 · 素材库 · 数据源 · 视频建库 · 重复文件查找 · 索引与维护</p>
           </aside>
         </section>
 
@@ -369,7 +367,7 @@ export default function Home() {
 
         <section className="section status-section" id="status" aria-labelledby="status-title">
           <div className="status-summary">
-            <span className="status-badge">Alpha 1.0.1-alpha.1 · 源码已公开</span>
+            <span className="status-badge">Alpha 1.0.1-alpha.2 · 精简工作台源码</span>
             <h2 id="status-title">先了解寻藏，正式版本准备好后再下载</h2>
             <p>
               现在可以查看找图流程、宣传动画与 Alpha
